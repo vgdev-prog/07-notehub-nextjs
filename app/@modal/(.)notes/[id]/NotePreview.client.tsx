@@ -1,20 +1,25 @@
 "use client"
 import Modal from "@/components/Modal/Modal";
-import {useParams} from "next/navigation";
+import {useParams, useRouter} from "next/navigation";
 import {useQuery} from "@tanstack/react-query";
 import * as NoteService from "@/lib/api";
 import {formatDate} from "@/lib/dateUtils";
 
 export const NotePreviewClient = () => {
     const {id} = useParams() as {id: string};
+    const router = useRouter();
     const {data, isError, isLoading} = useQuery({
         queryKey: ['note', id],
         queryFn: () => NoteService.getNoteById(id),
         refetchOnMount: false
     });
 
+    const handleCloseModal = () => {
+        router.back();
+    };
+
     return (
-        <Modal>
+        <Modal onCloseModal={handleCloseModal}>
             {isLoading && (
                 <div style={{padding: '20px', textAlign: 'center'}}>
                     Loading...
