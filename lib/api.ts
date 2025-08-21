@@ -32,40 +32,41 @@ export const getAllNotes = async (
         params.append('tag', tag);
     }
 
-    const response = await axios.get(`${API_URL}/notes?${params.toString()}`, {
+    const response = await axios.get<NoteResponse>(`${API_URL}/notes?${params.toString()}`, {
         headers: {
             'Content-Type': 'application/json',
             'Authorization': `Bearer ${process.env.NEXT_PUBLIC_NOTEHUB_TOKEN}`,
         },
     });
-    return response.data as NoteResponse;
+    return response.data;
 }
 
 export const createNote = async (note: Omit<Note, 'id' | 'createdAt' | 'updatedAt'>): Promise<Note> => {
-    const response = await axios.post(`${API_URL}/notes`, note, {
+    const response = await axios.post<Note>(`${API_URL}/notes`, note, {
         headers: {
             'Content-Type': 'application/json',
             'Authorization': `Bearer ${process.env.NEXT_PUBLIC_NOTEHUB_TOKEN}`,
         },
     });
-    return response.data as Note;
+    return response.data;
 }
 
 export const getNoteById = async (id: string): Promise<Note> => {
-    const response = await axios.get(`${API_URL}/notes/${id}`, {
+    const response = await axios.get<Note>(`${API_URL}/notes/${id}`, {
         headers: {
             'Content-Type': 'application/json',
             'Authorization': `Bearer ${process.env.NEXT_PUBLIC_NOTEHUB_TOKEN}`,
         },
     });
-    return response.data as Note;
+    return response.data;
 }
 
-export const deleteNote = async (id: string): Promise<void> => {
-    await axios.delete(`${API_URL}/notes/${id}`, {
+export const deleteNote = async (id: string): Promise<Note> => {
+    const response = await axios.delete<Note>(`${API_URL}/notes/${id}`, {
         headers: {
             'Content-Type': 'application/json',
             'Authorization': `Bearer ${process.env.NEXT_PUBLIC_NOTEHUB_TOKEN}`,
         },
     });
+    return response.data;
 }

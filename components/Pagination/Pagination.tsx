@@ -22,7 +22,7 @@ const Pagination = ({ totalPages, page, setPage }: PaginationProps) => {
             onPageChange={({ selected }) => {
                 setPage(selected + 1);
             }}
-            initialPage={page - 1}
+            forcePage={page - 1}
             containerClassName={css.pagination}
             activeClassName={css.active}
             nextLabel="→"

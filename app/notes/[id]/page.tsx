@@ -3,7 +3,7 @@ import * as NoteService from "@/lib/api";
 import css from './page.module.css';
 import {HydrationBoundary, QueryClient} from "@tanstack/react-query";
 import {dehydrate} from "@tanstack/query-core";
-import {NoteDetailsClient} from "@/app/notes/[id]/Notes.client";
+import {NoteDetailsClient} from "@/app/notes/[id]/NoteDetails.client";
 
 interface PageProps {
     params: Promise<{ id: string }>

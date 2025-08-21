@@ -9,7 +9,8 @@ export const NoteDetailsClient =  () => {
     const {id} = useParams() as {id: string};
     const {data, isError, isLoading} = useQuery({
         queryKey: ['note', id],
-        queryFn: () => NoteService.getNoteById(id)
+        queryFn: () => NoteService.getNoteById(id),
+        refetchOnMount: false
     })
 
     return (

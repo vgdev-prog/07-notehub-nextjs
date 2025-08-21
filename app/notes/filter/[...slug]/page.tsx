@@ -1,4 +1,4 @@
-import NotesClient from "./NotesClient";
+import NotesClient from "./Notes.client";
 import {HydrationBoundary, QueryClient} from "@tanstack/react-query";
 import {getAllNotes} from "@/lib/api";
 import {dehydrate} from "@tanstack/query-core";

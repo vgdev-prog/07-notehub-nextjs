@@ -7,12 +7,12 @@ interface Props {
 }
 
 
-const Header = ({}: Props) => {
+const Header = ({className}: Props) => {
     return (
-        <header className={`${css.header}`}>
+        <header className={`${css.header} ${className || ''}`}>
            <div className={`container ${css.headerRow}`}>
                <Link href='/'
-                     area-label='Home'
+                     aria-label='Home'
                >NoteHub</Link>
 
                <nav aria-label='Main Navigation'>
