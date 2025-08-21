@@ -20,7 +20,7 @@ const Modal = ({children, onCloseModal}: ModalProps) => {
         }
     };
     
-    const handleModalClick = (e) => {
+    const handleModalClick = (e: React.MouseEvent) => {
         e.stopPropagation();
     };
     

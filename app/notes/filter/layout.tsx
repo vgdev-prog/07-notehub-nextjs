@@ -1,12 +1,10 @@
 import {ReactNode} from "react";
 import css from './layout.module.css';
 
-interface NotesLayoutProps {
+const NotesLayout = ({children, sidebar}: {
     children: ReactNode;
     sidebar: ReactNode;
-}
-
-const NotesLayout = ({children, sidebar, modal}: NotesLayoutProps) => {
+}) => {
     return (
         <div className={css.container}>
             <div className={css.sidebar}>

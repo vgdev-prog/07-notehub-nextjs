@@ -10,15 +10,15 @@ const TagsMenu = () => {
       </button>
       <ul className={css.menuList}>
         <li className={css.menuItem}>
-          <a href="/notes/filter/all" className={css.menuLink}>
+          <Link href="/notes/filter/all" className={css.menuLink}>
             All notes
-          </a>
+          </Link>
         </li>
         {TAG_LIST.map((tag) => (
           <li key={tag.id} className={css.menuItem}>
-            <a href={`/notes/filter/${tag.name}`} className={css.menuLink}>
+            <Link href={`/notes/filter/${tag.name}`} className={css.menuLink}>
               {tag.name}
-            </a>
+            </Link>
           </li>
         ))}
       </ul>
