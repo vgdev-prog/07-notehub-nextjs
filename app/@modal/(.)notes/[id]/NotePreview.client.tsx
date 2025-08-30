@@ -1,12 +1,15 @@
 "use client"
 import Modal from "@/components/Modal/Modal";
-import {useParams, useRouter} from "next/navigation";
+import {useRouter} from "next/navigation";
 import {useQuery} from "@tanstack/react-query";
 import * as NoteService from "@/lib/api";
 import {formatDate} from "@/lib/dateUtils";
 
-export const NotePreviewClient = () => {
-    const {id} = useParams() as {id: string};
+interface NotePreviewClientProps {
+    id: string;
+}
+
+export const NotePreviewClient = ({ id }: NotePreviewClientProps) => {
     const router = useRouter();
     const {data, isError, isLoading} = useQuery({
         queryKey: ['note', id],
